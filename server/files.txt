@@ -1,0 +1,291 @@
+!create,new-b
+# Step 1: Clone the repository
+git clone https://github.com/your-username/test-repo.git
+cd test-repo
+
+# Step 2: Create and switch to a new branch
+git checkout -b feature-branch
+
+# Step 3: Create a new file and add content
+echo "This is a new file with some content." > newfile.txt
+
+# Step 4: Stage and commit the new file
+git add newfile.txt
+git commit -m "Add newfile.txt with initial content"
+
+# Step 5: Push the feature branch to GitHub
+git push origin feature-branch
+
+git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+!createmerge
+# Clone the repository
+git clone <repo-url>
+cd <repo-folder>
+
+# Create and switch to the new branch 'my-feature'
+git checkout -b my-feature
+
+# Modify the README file (or any file)
+echo "This is a new feature!" >> README.md
+
+# Stage and commit the changes
+git add README.md
+git commit -m "Added a new line to README.md on my-feature branch"
+
+# Switch back to main branch
+git checkout main
+
+# Merge the 'my-feature' branch into main
+git merge my-feature
+
+# Optionally delete the feature branch after merging
+git branch -d my-feature
+
+# Push the changes to the remote repository (if needed)
+git push origin main
+$git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+!revert
+# Step 1: Clone the repository (if not already cloned)
+git clone <repository-url>
+
+# Step 2: Change into the directory
+cd <repository-name>
+
+# Step 3: Make several commits (example)
+echo "Change 1" > text1.txt
+git add text1.txt
+git commit -m "first commit"
+echo "Change 2" > text2.txt
+git add text2.txt
+git commit -m "second commit"
+echo "Change 3" > text3.txt
+git add text3.txt
+git commit -m "third commit"
+
+# Step 4: Check commit history
+git log --oneline
+
+# Step 5: Revert a specific commit (using commit hash)
+git revert <commit-hash>
+
+# Step 6: Add a commit message (in case of conflicts or editor mode)
+# Save and exit the editor (e.g., in Vim: ':wq')
+
+# Step 7: Push the changes to the remote repository
+git push origin main
+$git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+
+!append
+# Step 1: Clone the repository (if not already cloned)
+git clone https://github.com/your-username/your-repository.git
+
+# Step 2: Change into the repository directory
+cd your-repository
+
+# Step 3: Make a commit with an initial message
+echo "This is the initial commit message" > example.txt
+git add example.txt
+git commit -m "Initial commit message"
+
+# Step 4: Amend the commit message (correct or improve)
+git commit --amend
+
+# This will open an editor (e.g., Vim), where you can modify the commit message.
+# Edit the message, save and exit (e.g., in Vim: ':wq' to save and exit).
+
+# Step 5: Verify the changes by checking the commit history
+git log --oneline
+
+Once the editor opens, you'll see the current commit message at the top.
+Press i to enter insert mode and edit the message.
+After editing, press Esc to exit insert mode.
+Type :wq and hit Enter to write (save) and quit.
+$git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+
+!stash
+# Step 1: Clone the repository (skip if already cloned)
+git clone <repository-url>
+cd <repository-name>
+
+# Step 2: Create or switch to a branch (e.g., main)
+git checkout main
+
+# Step 3: Make uncommitted changes to a file
+echo "Temporary change" >> README.md
+
+# Step 4: Stash the changes
+git stash
+
+# Step 5: Create and switch to another branch
+git checkout -b temp-branch
+
+# Step 6: Return to the original branch
+git checkout main
+
+# Step 7: Apply the stashed changes (but keep the stash)
+git stash apply
+
+# OR if you want to apply and remove the stash from stash list
+# git stash pop
+
+# Step 8: Stage and commit the changes
+git add README.md
+git commit -m "Applied stashed changes to README.md"
+
+# Optional: Verify stash list (if applied instead of pop)
+git stash list
+
+# Step 9: Push changes if needed
+git push origin main
+!git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+
+!resolevmerge
+# 1. Clone the repository
+git clone https://github.com/archis04/check.git
+cd check
+
+# 2. Create and switch to branch-1
+git checkout -b branch-1
+echo "Line from branch-1" > conflict.txt
+git add conflict.txt
+git commit -m "Add line in branch-1"
+
+# 3. Create and switch to branch-2
+git checkout main
+git checkout -b branch-2
+echo "Line from branch-2" > conflict.txt
+git add conflict.txt
+git commit -m "Add line in branch-2"
+
+# 4. Merge branch-2 into branch-1 to create a conflict
+git checkout branch-1
+git merge branch-2  # Will cause merge conflict
+
+# 5. Open conflict in VS Code and resolve manually
+# (Choose "Incoming + Current" to keep both lines)
+# Then save the file
+
+# 6. Add resolved file and continue
+git add conflict.txt
+git commit -m "Merge resolved manually"
+
+# 7. Merge branch-1 into main
+git checkout main
+git merge branch-1
+
+# 8. Push to remote (if fails, rebase first)
+git push origin main  # Will likely fail due to remote changes
+
+# 9. Rebase with remote and resolve conflicts again (if prompted)
+git pull origin main --rebase
+
+# 10. Resolve any conflict again → `git add conflict.txt`
+git add conflict.txt
+git rebase --continue
+
+# 11. Finally, force push
+git push origin main --force
+!git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+
+
+
+
+!submodule
+# Create main repository
+mkdir main-repository
+cd main-repository
+git init
+
+# Create submodule repository
+mkdir submodule-repository
+cd submodule-repository
+git init
+echo "This is the submodule repository" > file.txt
+git add file.txt
+git commit -m "Initial commit in submodule"
+git remote add origin <submodule-repository-url>
+git push -u origin master
+
+# Add submodule to main repo
+cd ../main-repository
+git submodule add <submodule-repository-url> submodule
+git commit -m "Added submodule"
+git push origin master
+
+# Initialize and update submodule
+git submodule init
+git submodule update
+
+# Modify and commit changes in submodule
+cd submodule
+echo "Updated content in submodule" >> file.txt
+git add file.txt
+git commit -m "Updated content in submodule"
+git push origin master
+
+# Commit submodule changes in main repository
+cd ..
+git add submodule
+git commit -m "Updated submodule reference"
+git push origin master
+
+### git fetch origin
+git checkout main
+git pull origin main
+cd--
+!git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+
+
+
+
+!cherry-pick
+# Clone the repository and create feature-branch
+git clone https://github.com/archis04/main-repository.git
+cd main-repository
+git checkout -b feature-branch
+
+# Make several commits in the feature-branch
+echo "Feature 1" > feature.txt
+git add feature.txt
+git commit -m "First feature commit"
+echo "Feature 2" >> feature.txt
+git add feature.txt
+git commit -m "Second feature commit"
+echo "Feature 3" >> feature.txt
+git add feature.txt
+git commit -m "Third feature commit"
+
+# Identify the commit hash (e.g., 4e5f6g for "Second feature commit")
+
+# Switch to the main branch
+git checkout main
+
+# Cherry-pick the commit from feature-branch
+git cherry-pick 4e5f6g  # Replace with actual commit hash
+
+# If there are conflicts, resolve them, then commit
+git add <conflicted_files>
+git commit -m "Cherry-picked commit from feature-branch"
+
+# Push changes to main branch
+git push origin main
+!git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+

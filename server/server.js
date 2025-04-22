@@ -3,7 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import cookieParser from "cookie-parser"
 import dotenv from 'dotenv'
-
+import authRoutes from "./routes/auth/auth_route.js";
 
 const app=express()
 const PORT=process.env.PORT || 5000
@@ -14,7 +14,7 @@ dotenv.config({
 
 app.use(
     cors({
-        origin:`http://localhost:5173/`,
+        origin:`http://localhost:5173`,
         methods:['GET','POST','DELETE','PUT'],
         allowedHeaders:[
             "Content-Type",
@@ -44,4 +44,5 @@ connectDB()
 
 app.use(cookieParser())
 app.use(express.json())
+app.use("/api/auth", authRoutes);
 app.listen(PORT,()=>console.log(`server is now running on port :${PORT}`))
