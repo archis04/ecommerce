@@ -17,6 +17,10 @@ git commit -m "Add newfile.txt with initial content"
 git push origin feature-branch
 
 git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 
@@ -47,7 +51,10 @@ git branch -d my-feature
 # Push the changes to the remote repository (if needed)
 git push origin main
 $git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 !revert
@@ -80,7 +87,10 @@ git revert <commit-hash>
 # Step 7: Push the changes to the remote repository
 git push origin main
 $git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 
@@ -110,7 +120,10 @@ Press i to enter insert mode and edit the message.
 After editing, press Esc to exit insert mode.
 Type :wq and hit Enter to write (save) and quit.
 $git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 
@@ -150,7 +163,10 @@ git stash list
 # Step 9: Push changes if needed
 git push origin main
 !git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 
@@ -201,7 +217,10 @@ git rebase --continue
 # 11. Finally, force push
 git push origin main --force
 !git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 
@@ -252,7 +271,10 @@ git checkout main
 git pull origin main
 cd--
 !git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 
 
 
@@ -288,4 +310,7 @@ git commit -m "Cherry-picked commit from feature-branch"
 # Push changes to main branch
 git push origin main
 !git remote set-url origin https://github.com/archisborwankar/SEPMexp3.git
-
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
