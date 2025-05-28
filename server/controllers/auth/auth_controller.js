@@ -7,7 +7,7 @@ const { hash, compare } = bcrypt;
 //register
 export const registerUser = async (req, res) => {
   const { userName, email, password } = req.body;
-
+  console.log("Body Received:", req.body);
   try {
     const checkUser = await User.findOne({ email });
     if (checkUser)
@@ -49,7 +49,7 @@ export const loginUser = async (req, res) => {
         message: "User doesn't exists! Please register first",
       });
 
-    const checkPasswordMatch = await compare(
+    const checkPasswordMatch = await bcrypt.compare(
       password,
       checkUser.password
     );
@@ -59,7 +59,7 @@ export const loginUser = async (req, res) => {
         message: "Incorrect password! Please try again",
       });
 
-    const token = sign(
+    const token = jwt.sign(
       {
         id: checkUser._id,
         role: checkUser.role,
@@ -108,7 +108,7 @@ export const authMiddleware = async (req, res, next) => {
     });
 
   try {
-    const decoded = verify(token, "CLIENT_SECRET_KEY");
+    const decoded = jwt.verify(token, "CLIENT_SECRET_KEY");
     req.user = decoded;
     next();
   } catch (error) {
