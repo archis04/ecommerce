@@ -4,6 +4,7 @@ import cors from 'cors'
 import cookieParser from "cookie-parser"
 import dotenv from 'dotenv'
 import authRoutes from "./routes/auth/auth_route.js";
+import adminProductsRoutes from "./routes/admin/products-routes.js";
 
 const app=express()
 const PORT=process.env.PORT || 5000
@@ -45,4 +46,5 @@ connectDB()
 app.use(cookieParser())
 app.use(express.json())
 app.use("/api/auth", authRoutes);
+app.use("/api/admin/products", adminProductsRoutes);
 app.listen(PORT,()=>console.log(`server is now running on port :${PORT}`))
