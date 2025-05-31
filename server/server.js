@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser"
 import dotenv from 'dotenv'
 import authRoutes from "./routes/auth/auth_route.js";
 import adminProductsRoutes from "./routes/admin/products-routes.js";
+import shopProductsRoutes from "./routes/shop/product-routes.js"
 
 const app=express()
 const PORT=process.env.PORT || 5000
@@ -47,4 +48,6 @@ app.use(cookieParser())
 app.use(express.json())
 app.use("/api/auth", authRoutes);
 app.use("/api/admin/products", adminProductsRoutes);
+app.use("/api/shop/products", shopProductsRoutes);
+
 app.listen(PORT,()=>console.log(`server is now running on port :${PORT}`))
