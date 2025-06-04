@@ -1,10 +1,10 @@
-import React from 'react'
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Separator } from "@/components/ui/separator"
 import { filterOptions } from "@/config";
 import { Fragment } from "react";
-function ProductFilter() {
+import { Label } from "../ui/label";
+import { Checkbox } from "../ui/checkbox";
+import { Separator } from "../ui/separator";
+
+function ProductFilter({ filters, handleFilter }) {
   return (
     <div className="bg-background rounded-lg shadow-sm">
       <div className="p-4 border-b">
@@ -19,7 +19,13 @@ function ProductFilter() {
                 {filterOptions[keyItem].map((option) => (
                   <Label className="flex font-medium items-center gap-2 ">
                     <Checkbox
-            
+                      checked={
+                        filters &&
+                        Object.keys(filters).length > 0 &&
+                        filters[keyItem] &&
+                        filters[keyItem].indexOf(option.id) > -1
+                      }
+                      onCheckedChange={() => handleFilter(keyItem, option.id)}
                     />
                     {option.label}
                   </Label>
@@ -34,5 +40,4 @@ function ProductFilter() {
   );
 }
 
-
-export default ProductFilter
+export default ProductFilter;
